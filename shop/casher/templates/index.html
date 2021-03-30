@@ -1,0 +1,235 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="sidenav" style="margin-top:-15%;">
+            <div class="calculator" style="margin-top:23px;">
+                <div class="wrapper">
+                    <div class="logo">FCC Calculator</div>
+                    <div class="display">
+                        <div id="mem-indicator"></div>
+                        <input id="display" class="calcinput" value="0" disabled=true>
+                    </div>
+                    <div class="buttons">
+
+                        <button class="calcbutton op-key" id="clear-all">c</button>
+                        <button class="calcbutton op-key" id="plus-min" disabled></button>
+                        <button class="calcbutton op op-key">&#247;</button>
+                        <button class="calcbutton op op-key">&#215;</button>
+                        <button class="calcbutton numbers">7</button>
+                        <button class="calcbutton numbers">8</button>
+                        <button class="calcbutton numbers">9</button>
+                        <button class="calcbutton op op-key">&#8722;</button>
+                        <button class="calcbutton numbers">4</button>
+                        <button class="calcbutton numbers">5</button>
+                        <button class="calcbutton numbers">6</button>
+                        <button class="calcbutton op op-key">&#43;</button>
+                        <button class="calcbutton numbers">1</button>
+                        <button class="calcbutton numbers">2</button>
+                        <button class="calcbutton numbers">3</button>
+                        <button class="calcbutton numbers" id="double-width-btn">0</button>
+                        <button class="calcbutton numbers">.</button>
+                    </div>
+                    <button class="calcbutton eq op" id="double-height-btn">=</button>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="width:77%; margin-left:0;">
+            <div class="site-header sticky-top py-1 place">
+                <div class="container d-flex flex-column flex-md-row justify-content-between">
+                    <a class="py-2 d-none d-md-inline-block"></a>
+                    <a class="py-2 d-none d-md-inline-block">بيانات العميل</a>
+                    <a class="py-2 d-none d-md-inline-block"></a>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" action="" autocomplete="off">
+            {% csrf_token %}
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div id="date" class="input-group date" data-date-format="dd-mm-yyyy">
+                                {{ form.date }}
+                                <span class="input-group-addon calenderpadd"><i class="fas fa-calendar-check"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.eye }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.lens }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                {% if form.given.errors or form.reminder.errors %}
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {% for error in form.given.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {% for error in form.reminder.errors%}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.given }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.reminder }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <div class="site-header sticky-top py-1 place">
+                    <div class="container d-flex flex-column flex-md-row justify-content-between">
+                        <a class="py-2 d-none d-md-inline-block"></a>
+                        <a class="py-2 d-none d-md-inline-block">صورة الكشف</a>
+                        <a class="py-2 d-none d-md-inline-block"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <table class="table" style="width: 90%;display: inline-table;">
+                    <thead>
+                    <tr>
+                        <th class="text-center align-middle" style="border-top: 2px solid black;border-right: 2px solid black;border-bottom:2px solid black;"  colspan="1"  >اسم الطبيب</th>
+                        <th colspan="2"   style="border-top: 2px solid black;border-bottom:2px solid black;">{{ form.docName }}</th>
+                        <th class="text-center align-middle" colspan="1"   style="border-top: 2px solid black;border-bottom:2px solid black;">التاريخ</th>
+                        <th colspan="2"   style="border-top: 2px solid black;border-left: 2px solid black;border-bottom:2px solid black;">
+                            <div id="revealDate" class="input-group date" data-date-format="dd-mm-yyyy">
+                                {{ form.revealDate }}
+                                <span class="input-group-addon calenderpadd"><i class="fas fa-calendar-check"></i></span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;border-right: 2px solid black;">L</td>
+                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black; border-bottom: 2px solid black;">R</td>
+
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">sph</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">sph</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lAxisF }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lCylF }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lSphF }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.rAxisF }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.rCylF }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ form.rSphF }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lAxisN }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lCylN }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.lSphN }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.rAxisN }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ form.rCylN }}</td>
+                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ form.rSphN }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle"  colspan="1"  style="border-right: 2px solid black;border-bottom: 2px solid black;">الاسم</td>
+                        <td class="text-center align-middle"  colspan="4"  style="border-bottom: 2px solid black;">
+                            {{ form.paName }}</td>
+                        <td class="text-center align-middle"  colspan="1"  style="border-left: 2px solid black;border-bottom: 2px solid black;">.L.P.D</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table" style="margin-right: -5px; width: 9%;display: inline-table;">
+                    <thead>
+                    <tr>
+                        <th class="text-center align-middle" colspan="1"   style="background-color: white;border-top: 2px solid white; border-bottom: 0px solid white;"><input class="form-control" type="text" style="border-color: white" readonly></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 6px solid white; color: white;">c</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 2px solid black; color: white;">c</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;"><input class="text-center form-control" type="text" value="FAR" style="box-shadow: 0px 0px; border-color: white; background-color: white; border-color: white;" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;"><input class="text-center form-control" type="text" value="NEAR" style="box-shadow: 0px 0px; border-color: white; background-color: white; border-color: white;" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 2px solid white; color: white;">c</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container toppadd" style="width:77%; margin-left:0;">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-md-auto">
+                        <button type="reset" id="reset" type="button" class="btn btn-danger" style="min-width: 100px">اعادة ضبط</button>
+                    </div>
+                    <div class="col-md-auto">
+                        <button id="submit" type="submit" type="button" class="btn btn-success" style="min-width: 100px">حفظ</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock %}
+{% block javascript %}
+        <script src="{% static 'js/plugin.js' %}"></script>
+{% endblock %}

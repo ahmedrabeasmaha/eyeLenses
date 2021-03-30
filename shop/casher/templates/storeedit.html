@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load val %}
+{% block content %}
+        <form method="post" action="" autocomplete="off">
+            {% csrf_token %}
+            <div class="container toppadd">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.name|val:form2.name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.code|val:form2.code }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container toppadd">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.quan|val:form2.quan }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.img }}
+                                <label class="custom-file-label" for="id_img">من فضلك قم باختيار صوره</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="container toppadd">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-md-auto">
+                        <button id="submit" type="submit" type="button" class="btn btn-success" style="min-width: 100px">اضافه</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock %}
+{% block javascript %}
+        <script src="{% static 'js/plugin.js' %}"></script>
+{% endblock %}

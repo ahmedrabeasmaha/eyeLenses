@@ -1,0 +1,239 @@
+﻿ {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="container-fluid" style="max-width: 90%">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center align-middle" style="background-color: deepskyblue;border-bottom: 2px solid black; border-top: 2px solid black; border-right: 2px solid black; border-left: 2px solid black">م</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">التاريخ</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">المواصفات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in form2 %}
+                    {% if detail.status == True and detail.delStatus == True %}
+                    <tr class="bg-warning" style="border-bottom: 2px solid black;">
+                        <td class="col-md-auto text-center align-middle" style="border-right: 2px solid black; border-left: 2px solid black;">{{ counter }}</td>
+                        <td class="col-md-auto text-center align-middle" style=" border-left: 2px solid black;">{{ detail.date|date:'d-m-Y' }}</td>
+                        <td class="col-md-auto text-right align-middle" style=" border-left: 2px solid black;">
+                            <table class="table bg-warning" style="width: 90%;display: inline-table;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center align-middle" style="border-top: 2px solid black;border-right: 2px solid black;border-bottom:2px solid black;"  colspan="1"  >اسم الطبيب</th>
+                                        <th colspan="2" style="border-top: 2px solid black;border-bottom:2px solid black;" class="">{{ detail.docName }}</th>
+                                        <th class="text-center align-middle" colspan="1"   style="border-top: 2px solid black;border-bottom:2px solid black;">التاريخ</th>
+                                        <th colspan="2" style="border-top: 2px solid black;border-left: 2px solid black;border-bottom:2px solid black;">{{ detail.revealDate|date:'d-m-Y' }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3" style="width:50%; border-left: 2px solid black;border-bottom: 2px solid black;border-right: 2px solid black;">L</td>
+                                        <td class="text-center align-middle" colspan="3" style="width:50%; border-left: 2px solid black; border-bottom: 2px solid black;">R</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                                        <td class="text-center align-middle" style="width:16%;border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">sph</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                                        <td class="text-center align-middle" style="width:16%; border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">sph</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lAxisF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lCylF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lSphF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rAxisF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rCylF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ detail.rSphF }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lAxisN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lCylN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lSphN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rAxisN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rCylN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ detail.rSphN }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"  colspan="1"  style="border-right: 2px solid black;border-bottom: 2px solid black;">الاسم</td>
+                                        <td class="text-right align-middle"  colspan="4"  style="border-bottom: 2px solid black;">{{ detail.paName }}</td>
+                                        <td class="text-center align-middle"  colspan="1"  style="border-left: 2px solid black;border-bottom: 2px solid black;">.L.P.D</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table bg-warning" style=" margin-right: -1%;width: 10%;display: inline-table;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center align-middle" colspan="1"   style="border-top: 2px solid #ffc107; border-bottom: 2px solid #ffc107;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3"   style="background-color: #ffc107; border-bottom: 2px solid #ffc107; color: #ffc107;">c</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3"   style="background-color: #ffc107; border-bottom: 2px solid black; color: #ffc107;">c</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;">FAR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;">NEAR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3"   style="background-color: #ffc107; border-bottom: 2px solid #ffc107; color: #ffc107;">c</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            {% if detail.ann is not None %}
+                            <div class="row">
+                                <div class="col-md text-center align-middle">
+                                    {{ detail.ann }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-md text-center align-middle">
+                                    المقدم : {{ detail.given }}
+                                </div>
+                                <div class="col-md text-center align-middle">
+                                    الباقى : {{ detail.reminder }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% elif detail.status == False %}
+                    <tr style="border-bottom: 2px solid black;">
+                        <td class="col-md-auto text-center align-middle" style="border-right: 2px solid black; border-left: 2px solid black;">{{ counter }}</td>
+                        <td class="col-md-auto text-center align-middle" style=" border-left: 2px solid black;">{{ detail.date|date:'d-m-Y' }}</td>
+                        <td class="col-md-auto text-right align-middle" style=" border-left: 2px solid black;">
+                            <table class="table" style="width: 90%;display: inline-table;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center align-middle" style="border-top: 2px solid black;border-right: 2px solid black;border-bottom:2px solid black;"  colspan="1"  >اسم الطبيب</th>
+                                        <th colspan="2" style="border-top: 2px solid black;border-bottom:2px solid black;" class="">{{ detail.docName }}</th>
+                                        <th class="text-center align-middle" colspan="1"   style="border-top: 2px solid black;border-bottom:2px solid black;">التاريخ</th>
+                                        <th colspan="2" style="border-top: 2px solid black;border-left: 2px solid black;border-bottom:2px solid black;">{{ detail.revealDate|date:'d-m-Y' }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center align-middle" colspan="3" style="width:50%; border-left: 2px solid black;border-bottom: 2px solid black;border-right: 2px solid black;">L</td>
+                                        <td class="text-center align-middle" colspan="3" style="width:50%; border-left: 2px solid black; border-bottom: 2px solid black;">R</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                                        <td class="text-center align-middle" style="width:16%;border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">sph</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;">axis</td>
+                                        <td class="text-center align-middle" style="width:16%; border-bottom: 2px solid black;border-right: 2px solid black;">cyl</td>
+                                        <td class="text-center align-middle" style="width:17%; border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">sph</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lAxisF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lCylF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lSphF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rAxisF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rCylF }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ detail.rSphF }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lAxisN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lCylN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.lSphN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rAxisN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;">{{ detail.rCylN }}</td>
+                                        <td class="text-center align-middle"   style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black">{{ detail.rSphN }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center align-middle"  colspan="1"  style="border-right: 2px solid black;border-bottom: 2px solid black;">الاسم</td>
+                                        <td class="text-right align-middle"  colspan="4"  style="border-bottom: 2px solid black;">{{ detail.paName }}</td>
+                                        <td class="text-center align-middle"  colspan="1"  style="border-left: 2px solid black;border-bottom: 2px solid black;">.L.P.D</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table" style=" margin-right: -1%;width: 10%;display: inline-table;">
+                                <thead>
+                                <tr>
+                                    <th class="text-center align-middle" colspan="1"   style="border-top: 2px solid white; border-bottom: 2px solid white;"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 2px solid white; color: white;">c</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 2px solid black; color: white;">c</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;">FAR</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center align-middle" colspan="3"   style="border-left: 2px solid black;border-bottom: 2px solid black;">NEAR</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center align-middle" colspan="3"   style="background-color: white; border-bottom: 2px solid white; color: white;">c</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col text-center align-middle">
+                                                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md text-center align-middle">
+                                    المقدم: {{ detail.given }}
+                                </div>
+                                <div class="col-md text-center align-middle">
+                                    الباقي: {{ detail.reminder }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+                <nav aria-label="Page navigation example">
+            {% if form2.has_other_pages %}
+                <ul class="pagination justify-content-center">
+                    {% if form2.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link corner" href="?page={{ form2.previous_page_number }}">Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link corner" styly="border-top-left-radius: 0px; border-bottom-left-radius: 0px;"href="#">Previous</a>
+                        </li>
+                    {% endif %}
+                    {% for i in form2.paginator.page_range %}
+                    {% if form2.number == i %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">{{ i }}</a>
+                        </li>
+                    {% elif i > form2.number|add:'-3' and i < form2.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if form2.has_next %}
+                        <li class="page-item">
+                            <a class="page-link corner1" href="?page={{ form2.next_page_number }}">Next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link corner1" href="#">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </nav>
+{% endblock %}
+{% block javascript %}
+        <script src="{% static 'js/plugin.js' %}"></script>
+{% endblock %}

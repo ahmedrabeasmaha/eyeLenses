@@ -1,0 +1,234 @@
+.site-header {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+}
+
+.site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.clock {
+    color: #17D4FE;
+    font-size: 30px;
+    font-family: Orbitron;
+
+}
+
+.padd {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.nopadd {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#datepicker > span:hover{
+    cursor: pointer;
+}
+
+.input-group > .form-control:not(:last-child), .input-group > .custom-select:not(:last-child) {
+    border-radius: 0px 5px 5px 0px;
+
+}
+
+.calenderpadd {
+    padding: 5px;
+    border-radius: 5px 0px 0px 5px;
+    background-color: rgba(153, 153, 153, 0.85);
+}
+
+i {
+    padding-top: 6px;
+}
+
+.toppadd {
+    padding-top: 10px;
+}
+
+.place {
+    z-index: -1;
+}
+
+.sidenav {
+    margin-top: -35px;
+    padding: 0;
+    width: 350px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+@font-face
+{
+    font-family: digital;
+    src: url(https://res.cloudinary.com/thepeted/raw/upload/v1507751384/DSDIGI_ctlean.ttf);
+}
+
+.calculator {
+    background: #E7E5E4;
+    padding: 0 10px 10px 10px;
+    border: 1px solid hsl(0,02%,65%);
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 51%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper {
+    position: relative;
+    width: 264px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 0.5em;
+    text-align: center;
+    color: hsl(0,0%,55%);
+    margin: 5px auto;
+}
+
+.display {
+    font-family: 'digital';
+    color: hsl(25, 5%, 30%);
+    position: relative;
+    border: 3px inset #fff;
+    margin-bottom: 15px;
+    width: 263px;
+    border-radius: 8px;
+}
+
+#mem-indicator {
+    font-size: 1.4em;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+}
+
+.calcinput {
+    font-family: inherit;
+    padding:0.05em 8px;
+    letter-spacing: 0.02em;
+    font-size: 2.5em;
+    text-align: right;
+    width: 257px;
+    background: #C8CAAF;
+    border: 3px solid hsl(25,10%,30%);
+    border-radius: 5px;
+}
+
+.calcbutton {
+    display: block;
+    float: left;
+    margin: 4px;
+    width: 58px;
+    height: 40px;
+    font-size: 1.25em;
+    border-radius: 6px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#double-width-btn {
+    width: 124px;
+}
+
+#double-height-btn {
+    height: 86px;
+}
+
+.calcbutton:focus, .calcbutton:hover {
+    outline: 0;
+}
+
+.calcbutton:active {
+    box-shadow: none;
+}
+
+.mem-key {
+    font-size: 1em;
+    background-image: linear-gradient(to top, hsl(40,4%,27%), hsl(40,4%,35%) );
+    color: #FEFCF7;
+    border: 1px solid hsl(0,2%,50%);
+    box-shadow: 1px 6px 2px 0px rgba(0,0,0,0.06);
+
+}
+
+.mem-key:active {
+    background-image: linear-gradient(to bottom, hsl(40,4%,32%), hsl(40,4%,37%)  );
+}
+
+.numbers {
+    background-image: linear-gradient(to top, hsl(42,2%,90%), hsl(42,2%,95%) );
+    color: hsl(25, 5%, 35%);
+    border: 1px solid hsl(42,2%,70%);
+    box-shadow: 1px 6px 2px 0px rgba(0,0,0,0.04);
+}
+
+.numbers:active {
+    background-image: linear-gradient(to bottom, hsl(42,2%,90%), hsl(42,2%,95%) );
+
+}
+
+.op-key {
+    background-image: linear-gradient(to top, hsl(0,0%,55%), hsl(0,0%,60%) );
+    color: #FEFCF7;
+    border: 1px solid hsl(0,2%,50%);
+    box-shadow: 1px 6px 2px 0px rgba(0,0,0,0.06);
+}
+
+.op-key:active {
+    background-image: linear-gradient(to bottom, hsl(0,0%,55%), hsl(0,0%,60%) );
+}
+
+.eq {
+    background-image: linear-gradient(to top, hsl(13,85%,65%), hsl(13,85%,71%) );
+    color: #FEFCF7;
+    border: 1px solid hsl(23,3%,56%);
+    box-shadow: 1px 6px 2px 0px rgba(0,0,0,0.06);
+    position: absolute;
+    bottom: 0px;
+    right:  0px;
+}
+
+.eq:active {
+    background-image: linear-gradient(to bottom, hsl(13,85%,65%), hsl(13,85%,71%) );
+}
+
+.border1 {
+    border-top: 2px solid black;border-right: 2px solid black;
+}
+.border2 {
+    border-top: 2px solid black;
+}
+
+.border3 {
+    border-top: 2px solid black;border-left: 2px solid black;
+}
+
+.border4 {
+    border-top: 2px solid black;border-left: 2px solid black;border-right: 2px solid black;
+}
+
+.border5 {
+    border-top: 2px solid black;border-right: 2px solid black;border-bottom: 2px solid black;
+}
+
+.border6 {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.border7 {
+    border-top: 2px solid black;
+    border-left: 2px solid black;border-bottom: 2px solid black;
+}

@@ -1,0 +1,85 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="container">
+            <div class="site-header sticky-top py-1 place">
+                <div class="container d-flex flex-column flex-md-row justify-content-between">
+                    <a class="py-2 d-none d-md-inline-block"></a>
+                    <a class="py-2 d-none d-md-inline-block">البحث</a>
+                    <a class="py-2 d-none d-md-inline-block"></a>
+                </div>
+            </div>
+        </div>
+        <form method="post" action="" autocomplete="off">
+            {% csrf_token %}
+            <div class="container toppadd">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                {{ form.code }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <div class="col-sm d-flex justify-content-center">
+                            <div class="input-group date">
+                                <button id="submit" type="submit" type="button" class="btn btn-success" style="min-width: 100px">بحث</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="container-fluid toppadd" style="max-width: 90%">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center align-middle" style="background-color: deepskyblue;border-bottom: 2px solid black; border-top: 2px solid black; border-right: 2px solid black; border-left: 2px solid black">م</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">الكود</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">الاسم و الكميه</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">الصوره</th>
+                        <th class="text-center align-middle" style="background-color: deepskyblue; border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">تعديل</th>
+                        <th class="text-center align-middle" style=" background-color: deepskyblue;border-bottom: 2px solid black; border-top: 2px solid black; border-left: 2px solid black">حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for detail in search %}
+                    <tr style="border-bottom: 2px solid black;">
+                        <td class="col-md-auto text-center align-middle" style="border-right: 2px solid black; border-left: 2px solid black;">{{ counter }}</td>
+                        <td class="col-md-auto text-center align-middle" style=" border-left: 2px solid black;">{{ detail.code }}</td>
+                        <td class="col-md-auto text-right align-middle" style=" border-left: 2px solid black;">
+                            اسم الشنبر : {{ detail.name }}
+                            <br>
+                            الكميه : {{ detail.quan }}
+                        </td>
+                        <td class="col-md-auto text-center align-middle" style=" border-left: 2px solid black;">
+                            <img src="{{ detail.img.url }}">
+                        </td>
+                        <td class="col-md-auto text-center align-middle" style=" border-left: 2px solid black;">
+                            <a href="{% url 'editstore' id=detail.id %}"><img src="{% static 'img/edit.png' %}"></a>
+                        </td>
+                        <td class="col-md-auto text-center align-middle" style="border-right: 2px solid black; border-left: 2px solid black;">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <input type="hidden" name="form_type" value="formOne">
+                                <input type="hidden" name="storeid" value="{{ detail.id }}">
+                                <input name="remove" type="image" src="{% static 'img/remove.png' %}" alt="Submit">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}
+{% block javascript %}
+        <script src="{% static 'js/plugin.js' %}"></script>
+{% endblock %}
